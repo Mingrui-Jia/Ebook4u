@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN 2.0//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+
+
+	<!-- ______________________________________For user_________________________________________ -->
+	<bean id="userDao" class="com.angular.dao.UserDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="userManagerBase" class="com.angular.service.UserManager">
+		<property name="userDao" ref="userDao"></property>
+	</bean>
+
+	<bean id="userManager" parent="transactionBese">
+		<property name="target" ref="userManagerBase"></property>
+
+		
+	</bean>
+	<!-- For book -->
+	<bean id="bookDao" class="com.angular.dao.BookDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="bookManagerBase" class="com.angular.service.BookManager">
+		<property name="bookDao" ref="bookDao"></property>
+	</bean>
+
+	<bean id="bookManager" parent="transactionBese">
+		<property name="target" ref="bookManagerBase"></property>
+
+	</bean>
+
+
+
+	<!-- For Favor -->
+	<bean id="favorDao" class="com.angular.dao.FavorDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="favorManagerBase" class="com.angular.service.FavorManager">
+		<property name="favorDao" ref="favorDao"></property>
+	</bean>
+
+	<bean id="favorManager" parent="transactionBese">
+		<property name="target" ref="favorManagerBase"></property>
+
+	</bean>
+	
+	<!-- For Follow -->
+	<bean id="followDao" class="com.angular.dao.FollowDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="followManagerBase" class="com.angular.service.FollowManager">
+		<property name="followDao" ref="followDao"></property>
+	</bean>
+
+	<bean id="followManager" parent="transactionBese">
+		<property name="target" ref="followManagerBase"></property>
+
+	</bean>
+	<!-- For Rate -->
+	<bean id="rateDao" class="com.angular.dao.RateDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="rateManagerBase" class="com.angular.service.RateManager">
+		<property name="rateDao" ref="rateDao"></property>
+	</bean>
+
+	<bean id="rateManager" parent="transactionBese">
+		<property name="target" ref="rateManagerBase"></property>
+
+	</bean>
+	
+	
+	<!-- For Comments -->
+	<bean id="commentsDao" class="com.angular.dao.CommentsDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="commentsManagerBase" class="com.angular.service.CommentsManager">
+		<property name="commentsDao" ref="commentsDao"></property>
+	</bean>
+
+	<bean id="commentsManager" parent="transactionBese">
+		<property name="target" ref="commentsManagerBase"></property>
+
+	</bean>
+	
+</beans>
